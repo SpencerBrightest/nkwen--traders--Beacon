@@ -33,3 +33,13 @@ These rules dictate the implementation standards for this pixel-perfect UI proje
 
 ## 7. Interactivity Clarification
 - Ask for clarification before assuming what interactivity the JS should handle if not obvious from the HTML structure (e.g., nav toggle, form validation, modals, carousel).
+
+## 8. About Page Rules (`about.html`, `about.css`, `about.js`)
+- Maintain exact header and footer styling consistency with `index.html`.
+- Mobile navigation must use the right-sliding sidebar triggered by the hamburger icon (identical behavior to `index.html`).
+- Implement the pixel-perfect layout matching the "Our Heritage & Craft" reference design:
+  - Hero Section with grid overlay styling and yellow accent bar.
+  - "WHO WE ARE & WHAT WE REPRESENT" split grid section with Cameroonian retail story and image.
+  - "OUR PHILOSOPHY" - "Crafting Modern Classics" 4-card feature grid with "The Art of Creation", "Meticulous Standards", "Sustainable Luxury", "Timeless Design", and "Client Commitment".
+  - "SUPPORT" - "Frequently Asked Questions" interactive accordion with smooth open/close toggles in `about.js`.
+- Use existing assets from `/assets` (`hero_bg.jpg`, `cat_household.jpg`, etc.) gracefully.
