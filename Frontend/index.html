@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nkwen Traders</title>
+    <!-- Google Fonts for typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+
+    <!-- Sidebar Navigation for Mobile -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    <aside class="sidebar" id="sidebar">
+        <button class="close-btn" id="closeSidebarBtn" aria-label="Close menu">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+        <nav class="sidebar-nav">
+            <a href="index.html" class="active">Home</a>
+            <a href="Catalog.html">Products</a>
+            <a href="about.html">About Us</a>
+            <a href="contact.html">Contact Us</a>
+        </nav>
+    </aside>
+
+    <!-- Header Section -->
+    <header id="mainHeader">
+        <div class="container header-container">
+            <a href="index.html" class="logo">NkweN Traders</a>
+            
+            <nav class="desktop-nav">
+                <a href="index.html" class="active">Home</a>
+                <a href="Catalog.html">Products</a>
+                <a href="about.html">About Us</a>
+                <a href="contact.html">Contact Us</a>
+            </nav>
+
+            <div class="header-actions">
+                <a href="#" class="cart-btn" aria-label="Shopping Cart">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                </a>
+                <button class="hamburger-btn" id="openSidebarBtn" aria-label="Open menu">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section" style="background-image: linear-gradient(rgba(10, 25, 47, 0.7), rgba(10, 25, 47, 0.7)), url('assets/hero_bg.jpg');">
+        <div class="container hero-content">
+            <h1>Elevate Your Shopping<br>with NkweN Traders</h1>
+            <svg class="hero-underline" width="280" height="15" viewBox="0 0 280 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M2.5 12.5C48.5 4.5 130.5 -1.5 277.5 12.5" stroke="#FDB022" stroke-width="4" stroke-linecap="round"/>
+            </svg>
+            <a href="Catalog.html" class="btn btn-primary">
+                Explore Catalogue 
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </a>
+        </div>
+    </section>
+
+    <!-- Categories Section (Overlapping) -->
+    <section class="categories-section">
+        <div class="container categories-grid">
+            <!-- Category 1 -->
+            <a href="#" class="category-card card-small">
+                <img src="assets/cat_groceries.jpg" alt="Groceries">
+                <div class="category-info">
+                    <h3>Groceries</h3>
+                    <p>120+ Products</p>
+                </div>
+            </a>
+
+            <!-- Category 2 (Featured) -->
+            <a href="#" class="category-card card-large">
+                <img src="assets/cat_household.jpg" alt="Household">
+                <div class="expand-icon">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
+                </div>
+                <div class="category-info">
+                    <h3>Household</h3>
+                    <p class="highlight-text">Featured Collection</p>
+                </div>
+            </a>
+
+            <!-- Category 3 -->
+            <a href="#" class="category-card card-small">
+                <img src="assets/cat_personal_care.jpg" alt="Personal Care">
+                <div class="category-info">
+                    <h3>Personal Care</h3>
+                    <p>85+ Products</p>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <!-- Trending Products Section -->
+    <section class="trending-section">
+        <div class="container trending-layout">
+            <!-- Section Header -->
+            <div class="trending-header">
+                <span class="tagline">HIGH QUALITY</span>
+                <h2>Our Trending<br>Products</h2>
+                <p>Discover the latest in retail trends with our curated collection of must-have items. From everyday essentials to premium selections, these trending products are sure to elevate your lifestyle.</p>
+                <a href="Catalog.html" class="btn btn-outline">
+                    View All
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </a>
+            </div>
+
+            <!-- Products Grid -->
+            <div class="products-grid">
+                <!-- Product 1 -->
+                <div class="product-card">
+                    <div class="badge badge-new">NEW</div>
+                    <div class="product-img-wrapper">
+                        <img src="assets/prod_pantry_bundle.jpg" alt="Premium Pantry Bundle">
+                    </div>
+                    <div class="product-details">
+                        <h3>Premium Pantry Bundle</h3>
+                        <p>A curated selection of daily essentials.</p>
+                        <div class="rating">
+                            <span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span>
+                        </div>
+                        <div class="price">$ 45.00</div>
+                    </div>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="product-card">
+                    <div class="product-img-wrapper">
+                        <img src="assets/prod_breakfast.jpg" alt="Ceramic Breakfast Set">
+                    </div>
+                    <div class="product-details">
+                        <h3>Ceramic Breakfast Set</h3>
+                        <p>Start your morning with minimalist elegance.</p>
+                        <div class="rating">
+                            <span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span>
+                        </div>
+                        <div class="price">$ 85.00</div>
+                    </div>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="product-card">
+                    <!-- Note: Using cat_personal_care.jpg as requested to use only existing assets -->
+                    <div class="product-img-wrapper">
+                        <img src="assets/cat_personal_care.jpg" alt="Organic Body Lotion">
+                    </div>
+                    <div class="product-details">
+                        <h3>Organic Body Lotion</h3>
+                        <p>Nourish your skin with natural ingredients.</p>
+                        <div class="rating">
+                            <span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span>
+                        </div>
+                        <div class="price">$ 32.00</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container footer-container">
+            <div class="footer-left">
+                <a href="index.html" class="logo">NkweN Traders</a>
+                <p>&copy; 2024 NkweN Traders. All rights reserved.</p>
+            </div>
+            <div class="footer-right">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Shipping Info</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="Js/index.js"></script>
+</body>
+</html>
