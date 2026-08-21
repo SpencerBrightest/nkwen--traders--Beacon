@@ -1,1 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - NkweN Traders</title>
+    <!-- Google Fonts for typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    
+    <!-- Leaflet CSS for Live Interactive Map -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/contact.css">
+</head>
+<body>
 
+    <!-- Sidebar Navigation for Mobile -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    <aside class="sidebar" id="sidebar">
+        <button class="close-btn" id="closeSidebarBtn" aria-label="Close menu">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+        <nav class="sidebar-nav">
+            <a href="index.html">Home</a>
+            <a href="Catalog.html">Products</a>
+            <a href="about.html">About Us</a>
+            <a href="contact.html" class="active">Contact Us</a>
+        </nav>
+    </aside>
+
+    <!-- Header Section -->
+    <header id="mainHeader">
+        <div class="container header-container">
+            <a href="index.html" class="logo">NkweN Traders</a>
+            
+            <nav class="desktop-nav">
+                <a href="index.html">HOME</a>
+                <a href="Catalog.html">PRODUCTS</a>
+                <a href="about.html">ABOUT US</a>
+                <a href="contact.html" class="active">CONTACT US</a>
+            </nav>
+
+            <div class="header-actions">
+                <a href="#" class="cart-btn" aria-label="Shopping Cart">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                </a>
+                <button class="hamburger-btn" id="openSidebarBtn" aria-label="Open menu">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Contact Hero Section -->
+    <section class="contact-hero" style="background-image: linear-gradient(rgba(11, 20, 35, 0.88), rgba(11, 20, 35, 0.88)), url('assets/hero_bg.jpg');">
+        <div class="container contact-hero-content">
+            <span class="hero-subcaption">GET IN TOUCH</span>
+            <h1>We're Here to Help</h1>
+            <p>Whether you have a question about our collections, need assistance with an order, or want to explore custom furniture solutions, our dedicated team is ready to assist you.</p>
+        </div>
+    </section>
+
+    <!-- Contact Main Section (Grid with Left Details/Map & Right Form) -->
+    <main class="contact-main-section">
+        <div class="container contact-grid">
+            
+            <!-- Left Column: Reach Out & Live Map -->
+            <div class="contact-left-col">
+                <h2 class="reach-out-title">Reach Out</h2>
+
+                <div class="contact-info-list">
+                    <!-- Our Showroom -->
+                    <div class="contact-info-item">
+                        <div class="info-icon-wrapper">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
+                        </div>
+                        <div class="info-details">
+                            <h3>Our Showroom</h3>
+                            <p>123 Design Boulevard</p>
+                            <p>Artisan District, Suite 400</p>
+                            <p>Metropolis, NY 10001</p>
+                        </div>
+                    </div>
+
+                    <!-- Email Us -->
+                    <div class="contact-info-item">
+                        <div class="info-icon-wrapper">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                <polyline points="22,6 12,13 2,6"></polyline>
+                            </svg>
+                        </div>
+                        <div class="info-details">
+                            <h3>Email Us</h3>
+                            <p><a href="mailto:hello@nkwentraders.com">hello@nkwentraders.com</a></p>
+                            <p><a href="mailto:support@nkwentraders.com">support@nkwentraders.com</a></p>
+                        </div>
+                    </div>
+
+                    <!-- Call Us -->
+                    <div class="contact-info-item">
+                        <div class="info-icon-wrapper">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                            </svg>
+                        </div>
+                        <div class="info-details">
+                            <h3>Call Us</h3>
+                            <p><a href="tel:+15551234567">+1 (555) 123-4567</a></p>
+                            <p class="hours-text">Mon-Fri: 9am - 6pm EST</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Live Map of Nkwen Bamenda Card -->
+                <div class="map-card-container">
+                    <div class="map-card-header">
+                        <span class="map-card-title">Contact - NkweN Traders (Updated Style)</span>
+                        <div class="map-card-controls">
+                            <button id="resetMapBtn" class="map-control-btn" title="Reset View to Nkwen Center" aria-label="Reset Map View">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path></svg>
+                            </button>
+                            <div class="map-window-dots">
+                                <span class="dot"></span>
+                                <span class="dot"></span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Live Map Element -->
+                    <div class="map-wrapper">
+                        <div id="nkwenLiveMap" class="nkwen-live-map"></div>
+                        
+                        <!-- Real-time Coordinates HUD -->
+                        <div class="map-coords-badge" id="mapCoordsBadge">
+                            <span class="coords-dot"></span>
+                            <span class="coords-label">Nkwen, Bamenda:</span>
+                            <span class="coords-val" id="coordsValue">5.9631° N, 10.1591° E</span>
+                        </div>
+                    </div>
+
+                    <!-- Map Footer info strip -->
+                    <div class="map-card-footer">
+                        <div class="map-footer-top">
+                            <strong class="map-footer-name">Nkwen Traders Showroom</strong>
+                        </div>
+                        <div class="map-footer-address">
+                            <span>Commercial Ave / Mile 2 Nkwen, Bamenda, NW Region</span>
+                        </div>
+                        <div class="map-footer-bottom">
+                            <span>Hours: Mon-Fri 8am - 6pm</span>
+                            <span class="map-footer-contact">Call: +237 670 000 000</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column: Send a Message Form -->
+            <div class="contact-right-col">
+                <div class="contact-form-card">
+                    <h2 class="form-title">Send a Message</h2>
+                    <p class="form-subtitle">Fill out the form below and our team will get back to you within 24 hours.</p>
+
+                    <form id="contactForm" class="contact-form" novalidate>
+                        <!-- First & Last Name Row -->
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="firstName">FIRST NAME</label>
+                                <input type="text" id="firstName" name="firstName" placeholder="Jane" required>
+                                <span class="field-error" id="firstNameError"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="lastName">LAST NAME</label>
+                                <input type="text" id="lastName" name="lastName" placeholder="Doe" required>
+                                <span class="field-error" id="lastNameError"></span>
+                            </div>
+                        </div>
+
+                        <!-- Email Address -->
+                        <div class="form-group">
+                            <label for="emailAddress">EMAIL ADDRESS</label>
+                            <input type="email" id="emailAddress" name="emailAddress" placeholder="jane@example.com" required>
+                            <span class="field-error" id="emailAddressError"></span>
+                        </div>
+
+                        <!-- Subject Dropdown -->
+                        <div class="form-group">
+                            <label for="subjectSelect">SUBJECT</label>
+                            <div class="select-wrapper">
+                                <select id="subjectSelect" name="subject" required>
+                                    <option value="" disabled selected>Select a topic</option>
+                                    <option value="general">General Inquiry</option>
+                                    <option value="custom-furniture">Custom Furniture Solutions</option>
+                                    <option value="order-support">Order & Shipping Support</option>
+                                    <option value="showroom-consultation">Showroom Visit & Consultation</option>
+                                    <option value="partnership">Wholesale & Partnership</option>
+                                </select>
+                                <svg class="select-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </div>
+                            <span class="field-error" id="subjectError"></span>
+                        </div>
+
+                        <!-- Message Textarea -->
+                        <div class="form-group">
+                            <label for="messageText">MESSAGE</label>
+                            <textarea id="messageText" name="message" rows="5" placeholder="How can we help you?" required></textarea>
+                            <span class="field-error" id="messageError"></span>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <button type="submit" id="submitContactBtn" class="btn-send-message">
+                            <span>SEND MESSAGE</span>
+                        </button>
+
+                        <!-- Form Status Toast / Message -->
+                        <div id="formFeedback" class="form-feedback" aria-live="polite"></div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container footer-container">
+            <div class="footer-left">
+                <a href="index.html" class="logo">NkweN Traders</a>
+                <p>&copy; 2024 NkweN Traders. All rights reserved.</p>
+            </div>
+            <div class="footer-right">
+                <a href="#">PRIVACY POLICY</a>
+                <a href="#">TERMS OF SERVICE</a>
+                <a href="#">SHIPPING INFO</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Leaflet JS for Map -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    
+    <!-- Scripts -->
+    <script src="Js/index.js"></script>
+    <script src="Js/contact.js"></script>
+</body>
+</html>
