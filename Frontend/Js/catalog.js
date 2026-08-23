@@ -64,8 +64,110 @@ const products = [
         badge: null,
         rating: 5,
         image: "assets/prod_breakfast.jpg"
+    },
+    {
+        id: 7,
+        title: "Fresh Red Onions 1kg",
+        category: "Fresh Produce",
+        description: "Locally sourced, crisp and flavorful red onions. Essential for a variety of culinary dishes.",
+        price: 2.50,
+        oldPrice: null,
+        badge: null,
+        rating: 4,
+        image: "assets/prod_onions_1kg.jpg"
+    },
+    {
+        id: 8,
+        title: "Premium Long Grain Rice 25kg",
+        category: "Groceries",
+        description: "High-quality, aromatic long grain rice. Perfect fluffy texture for family meals and gatherings.",
+        price: 35.00,
+        oldPrice: 40.00,
+        badge: { text: "SALE", type: "red" },
+        rating: 4.5,
+        image: "assets/prod_rice_25kg.jpg"
+    },
+    {
+        id: 9,
+        title: "Iodized Sea Salt 1kg",
+        category: "Groceries",
+        description: "Pure, natural sea salt fortified with essential iodine. A pantry staple for seasoning.",
+        price: 1.20,
+        oldPrice: null,
+        badge: null,
+        rating: 5,
+        image: "assets/prod_salt_1kg.jpg"
+    },
+    {
+        id: 10,
+        title: "Organic White Beans 1kg",
+        category: "Groceries",
+        description: "Nutritious and versatile white beans. Excellent source of plant-based protein and fiber.",
+        price: 3.80,
+        oldPrice: null,
+        badge: null,
+        rating: 4,
+        image: "assets/prod_beans_white.jpg"
+    },
+    {
+        id: 11,
+        title: "Pure Vegetable Oil 5L",
+        category: "Groceries",
+        description: "High-quality, cholesterol-free vegetable oil suitable for all your cooking and frying needs.",
+        price: 18.50,
+        oldPrice: null,
+        badge: null,
+        rating: 4.5,
+        image: "assets/Vegetable Oil 5L.jpg"
+    },
+    {
+        id: 12,
+        title: "Fresh Plantain Bunch",
+        category: "Fresh Produce",
+        description: "Farm-fresh, ripe plantains ready to be fried, boiled, or baked for a delicious side dish.",
+        price: 5.00,
+        oldPrice: null,
+        badge: { text: "FRESH", type: "yellow" },
+        rating: 5,
+        image: "assets/Bunch of plantain.png"
+    },
+    {
+        id: 13,
+        title: "Cassava Bag",
+        category: "Fresh Produce",
+        description: "High-yield, premium quality fresh cassava straight from the farm.",
+        price: 12.00,
+        oldPrice: null,
+        badge: null,
+        rating: 4,
+        image: "assets/Cassava (bag).png"
+    },
+    {
+        id: 14,
+        title: "Multi-Purpose Detergent 1kg",
+        category: "Household Items",
+        description: "Tough on stains but gentle on fabrics. Leaves your clothes smelling fresh all day.",
+        price: 4.50,
+        oldPrice: null,
+        badge: null,
+        rating: 4.5,
+        image: "assets/Detergent 1kg.png"
+    },
+    {
+        id: 15,
+        title: "Maggi Seasoning Cubes",
+        category: "Groceries",
+        description: "Classic seasoning cubes to enhance the flavor of your soups, stews, and marinades.",
+        price: 3.00,
+        oldPrice: null,
+        badge: null,
+        rating: 5,
+        image: "assets/Maggi Cubes (pack).png"
     }
 ];
+
+let currentPage = 1;
+const itemsPerPage = 10;
 
 function generateStarsHTML(rating) {
     if (rating === 0) return '';
@@ -79,7 +181,7 @@ function generateStarsHTML(rating) {
     }
     
     if (hasHalfStar) {
-        // Simple visual trick: using hollow star for half for now, or just an unfilled star
+        // Hollow star for half
         html += `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>`;
     }
     
@@ -99,7 +201,12 @@ function renderCatalog() {
 
     gridContainer.innerHTML = ''; // Clear container
 
-    products.forEach(product => {
+    // Calculate pagination slice
+    const startIndex = (currentPage - 1) * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
+    const paginatedProducts = products.slice(startIndex, endIndex);
+
+    paginatedProducts.forEach(product => {
         const card = document.createElement('div');
         card.className = 'catalog-card';
 
@@ -136,7 +243,73 @@ function renderCatalog() {
         
         gridContainer.appendChild(card);
     });
+
+    renderPagination();
+    updateResultsText(startIndex, endIndex);
+}
+
+function renderPagination() {
+    const paginationContainer = document.querySelector('.pagination');
+    if (!paginationContainer) return;
+
+    const totalPages = Math.ceil(products.length / itemsPerPage);
+    paginationContainer.innerHTML = ''; // Clear existing pagination
+
+    if (totalPages <= 1) return; // No need for pagination if only 1 page
+
+    // Prev Button
+    const prevBtn = document.createElement('button');
+    prevBtn.className = 'page-nav';
+    prevBtn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>';
+    prevBtn.disabled = currentPage === 1;
+    if (currentPage === 1) prevBtn.style.opacity = '0.5';
+    prevBtn.addEventListener('click', () => {
+        if (currentPage > 1) {
+            currentPage--;
+            renderCatalog();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    });
+    paginationContainer.appendChild(prevBtn);
+
+    // Page Numbers
+    for (let i = 1; i <= totalPages; i++) {
+        const pageBtn = document.createElement('button');
+        pageBtn.className = `page-num ${i === currentPage ? 'active' : ''}`;
+        pageBtn.textContent = i;
+        pageBtn.addEventListener('click', () => {
+            currentPage = i;
+            renderCatalog();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+        paginationContainer.appendChild(pageBtn);
+    }
+
+    // Next Button
+    const nextBtn = document.createElement('button');
+    nextBtn.className = 'page-nav';
+    nextBtn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>';
+    nextBtn.disabled = currentPage === totalPages;
+    if (currentPage === totalPages) nextBtn.style.opacity = '0.5';
+    nextBtn.addEventListener('click', () => {
+        if (currentPage < totalPages) {
+            currentPage++;
+            renderCatalog();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    });
+    paginationContainer.appendChild(nextBtn);
+}
+
+function updateResultsText(startIndex, endIndex) {
+    const resultsTextElement = document.querySelector('.header-titles p');
+    if (resultsTextElement) {
+        const actualEndIndex = Math.min(endIndex, products.length);
+        resultsTextElement.textContent = \`Showing \${startIndex + 1}-\${actualEndIndex} of \${products.length} results\`;
+    }
 }
 
 // Initialize on page load
-document.addEventListener('DOMContentLoaded', renderCatalog);
+document.addEventListener('DOMContentLoaded', () => {
+    renderCatalog();
+});
