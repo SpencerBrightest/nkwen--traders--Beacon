@@ -1,173 +1,248 @@
-const products = [
-    {
-        id: 1,
-        title: "Artisan Sourdough Loaf",
-        category: "Bakery",
-        description: "Freshly baked daily with organic stone-ground flour and our signature starter. Perfectly crusty outside, soft inside.",
-        price: 6.99,
-        oldPrice: null,
-        badge: { text: "NEW", type: "yellow" },
-        rating: 4.5,
-        image: "assets/prod_bread_loaf.jpg"
-    },
-    {
-        id: 2,
-        title: "Organic Orange Juice",
-        category: "Groceries",
-        description: "Cold-pressed from 100% organic Valencia oranges. No added sugar, preservatives, or artificial flavors.",
-        price: 8.50,
-        oldPrice: null,
-        badge: null,
-        rating: 0, 
-        image: "assets/Palm Oil 1L.png"
-    },
-    {
-        id: 3,
-        title: "Bamboo Dish Brush Set",
-        category: "Household Items",
-        description: "Eco-friendly cleaning brush set with natural bamboo handles and durable sisal bristles. A sustainable choice.",
-        price: 12.75,
-        oldPrice: 15.00,
-        badge: { text: "15% OFF", type: "red" },
-        rating: 0,
-        image: "assets/cat_household.jpg"
-    },
-    {
-        id: 4,
-        title: "Fresh Organic Spinach",
-        category: "Fresh Produce",
-        description: "Crisp, farm-fresh organic spinach leaves. Perfect for nutrient-packed salads, smoothies, or cooking.",
-        price: 4.20,
-        oldPrice: null,
-        badge: null,
-        rating: 0,
-        image: "assets/cat_groceries.jpg"
-    },
-    {
-        id: 5,
-        title: "Premium Pantry Bundle",
-        category: "Groceries",
-        description: "A curated selection of high-quality daily essentials for your kitchen. Includes rice, pasta, and premium sauces.",
-        price: 45.00,
-        oldPrice: null,
-        badge: { text: "POPULAR", type: "yellow" },
-        rating: 5,
-        image: "assets/prod_pantry_bundle.jpg"
-    },
-    {
-        id: 6,
-        title: "Ceramic Breakfast Set",
-        category: "Household Items",
-        description: "Start your morning with minimalist elegance. Includes 2 premium ceramic plates and 2 matching mugs.",
-        price: 85.00,
-        oldPrice: null,
-        badge: null,
-        rating: 5,
-        image: "assets/prod_breakfast.jpg"
-    },
-    {
-        id: 7,
-        title: "Fresh Red Onions 1kg",
-        category: "Fresh Produce",
-        description: "Locally sourced, crisp and flavorful red onions. Essential for a variety of culinary dishes.",
-        price: 2.50,
-        oldPrice: null,
-        badge: null,
-        rating: 4,
-        image: "assets/prod_onions_1kg.jpg"
-    },
-    {
-        id: 8,
-        title: "Premium Long Grain Rice 25kg",
-        category: "Groceries",
-        description: "High-quality, aromatic long grain rice. Perfect fluffy texture for family meals and gatherings.",
-        price: 35.00,
-        oldPrice: 40.00,
-        badge: { text: "SALE", type: "red" },
-        rating: 4.5,
-        image: "assets/prod_rice_25kg.jpg"
-    },
-    {
-        id: 9,
-        title: "Iodized Sea Salt 1kg",
-        category: "Groceries",
-        description: "Pure, natural sea salt fortified with essential iodine. A pantry staple for seasoning.",
-        price: 1.20,
-        oldPrice: null,
-        badge: null,
-        rating: 5,
-        image: "assets/prod_salt_1kg.jpg"
-    },
-    {
-        id: 10,
-        title: "Organic White Beans 1kg",
-        category: "Groceries",
-        description: "Nutritious and versatile white beans. Excellent source of plant-based protein and fiber.",
-        price: 3.80,
-        oldPrice: null,
-        badge: null,
-        rating: 4,
-        image: "assets/prod_beans_white.jpg"
-    },
-    {
-        id: 11,
-        title: "Pure Vegetable Oil 5L",
-        category: "Groceries",
-        description: "High-quality, cholesterol-free vegetable oil suitable for all your cooking and frying needs.",
-        price: 18.50,
-        oldPrice: null,
-        badge: null,
-        rating: 4.5,
-        image: "assets/Vegetable Oil 5L.jpg"
-    },
-    {
-        id: 12,
-        title: "Fresh Plantain Bunch",
-        category: "Fresh Produce",
-        description: "Farm-fresh, ripe plantains ready to be fried, boiled, or baked for a delicious side dish.",
-        price: 5.00,
-        oldPrice: null,
-        badge: { text: "FRESH", type: "yellow" },
-        rating: 5,
-        image: "assets/Bunch of plantain.png"
-    },
-    {
-        id: 13,
-        title: "Cassava Bag",
-        category: "Fresh Produce",
-        description: "High-yield, premium quality fresh cassava straight from the farm.",
-        price: 12.00,
-        oldPrice: null,
-        badge: null,
-        rating: 4,
-        image: "assets/Cassava (bag).png"
-    },
-    {
-        id: 14,
-        title: "Multi-Purpose Detergent 1kg",
-        category: "Household Items",
-        description: "Tough on stains but gentle on fabrics. Leaves your clothes smelling fresh all day.",
-        price: 4.50,
-        oldPrice: null,
-        badge: null,
-        rating: 4.5,
-        image: "assets/Detergent 1kg.png"
-    },
-    {
-        id: 15,
-        title: "Maggi Seasoning Cubes",
-        category: "Groceries",
-        description: "Classic seasoning cubes to enhance the flavor of your soups, stews, and marinades.",
-        price: 3.00,
-        oldPrice: null,
-        badge: null,
-        rating: 5,
-        image: "assets/Maggi Cubes (pack).png"
-    }
-];
-
+let products = [];
+let filteredProducts = [];
 let currentPage = 1;
-const itemsPerPage = 10;
+const itemsPerPage = 12; // HTML says "Showing 1-12 of 148 results"
+
+const productDetailsMap = {
+    "Bread (loaf)": {
+        description: "Freshly baked daily with organic stone-ground flour and our signature starter. Perfectly crusty outside, soft inside.",
+        image: "assets/prod_bread_loaf.jpg",
+        rating: 4.5,
+        badge: { text: "NEW", type: "yellow" }
+    },
+    "Matches (box)": {
+        description: "Reliable and easy to light wooden matches. Essential for every household.",
+        image: "assets/Matches (box).png",
+        rating: 4,
+        badge: null
+    },
+    "Palm Oil 5L": {
+        description: "Premium quality, unrefined red palm oil. Rich in vitamins and perfect for traditional cooking.",
+        image: "assets/Palm Oil 5L.png",
+        rating: 5,
+        badge: { text: "POPULAR", type: "yellow" }
+    },
+    "Beans (White)": {
+        description: "Nutritious and versatile white beans. Excellent source of plant-based protein and fiber.",
+        image: "assets/prod_beans_white.jpg",
+        rating: 4.5,
+        badge: null
+    },
+    "Plantain (bunch)": {
+        description: "Farm-fresh, ripe plantains ready to be fried, boiled, or baked for a delicious side dish.",
+        image: "assets/Bunch of plantain.png",
+        rating: 5,
+        badge: { text: "FRESH", type: "yellow" }
+    },
+    "Beans (Red)": {
+        description: "High-quality red kidney beans. Perfect for stews, soups, and rice dishes.",
+        image: "assets/Beans (Red).png",
+        rating: 4.5,
+        badge: null
+    },
+    "Maggi Cubes (pack)": {
+        description: "Classic seasoning cubes to enhance the flavor of your soups, stews, and marinades.",
+        image: "assets/Maggi Cubes (pack).png",
+        rating: 5,
+        badge: null
+    },
+    "Tomato Paste (tin)": {
+        description: "Rich and concentrated tomato paste for authentic taste and deep color in your meals.",
+        image: "assets/Tomato (Tin).png",
+        rating: 4,
+        badge: null
+    },
+    "Soap (bar)": {
+        description: "Long-lasting multipurpose soap bar. Great for laundry and general household cleaning.",
+        image: "assets/Soap Bar.png",
+        rating: 4,
+        badge: null
+    },
+    "Onions 1kg": {
+        description: "Locally sourced, crisp and flavorful red onions. Essential for a variety of culinary dishes.",
+        image: "assets/prod_onions_1kg.jpg",
+        rating: 4.5,
+        badge: null
+    },
+    "Vegetable Oil 5L": {
+        description: "High-quality, cholesterol-free vegetable oil suitable for all your cooking and frying needs.",
+        image: "assets/Vegetable Oil 5L.jpg",
+        rating: 4.5,
+        badge: null
+    },
+    "Salt 1kg": {
+        description: "Pure, natural sea salt fortified with essential iodine. A pantry staple for seasoning.",
+        image: "assets/prod_salt_1kg.jpg",
+        rating: 5,
+        badge: null
+    },
+    "Cassava (bag)": {
+        description: "High-yield, premium quality fresh cassava straight from the farm.",
+        image: "assets/Cassava (bag).png",
+        rating: 4.5,
+        badge: null
+    },
+    "Sugar 1kg": {
+        description: "Refined white sugar. Sweeten your beverages and desserts with the best quality sugar.",
+        image: "assets/Sugar 1kg.png",
+        rating: 4.5,
+        badge: null
+    },
+    "Rice 25kg": {
+        description: "High-quality, aromatic long grain rice. Perfect fluffy texture for family meals and gatherings.",
+        image: "assets/prod_rice_25kg.jpg",
+        rating: 4.5,
+        badge: { text: "SALE", type: "red" }
+    },
+    "Rice 50kg": {
+        description: "Premium long grain rice in bulk size. The best value for large families and events.",
+        image: "assets/prod_rice_50kg.jpg",
+        rating: 5,
+        badge: null
+    },
+    "Detergent 1kg": {
+        description: "Tough on stains but gentle on fabrics. Leaves your clothes smelling fresh all day.",
+        image: "assets/Detergent 1kg.png",
+        rating: 4.5,
+        badge: null
+    },
+    "Palm Oil 1L": {
+        description: "Pure and unrefined red palm oil in a convenient 1-liter bottle.",
+        image: "assets/Palm Oil 1L.png",
+        rating: 4.5,
+        badge: null
+    },
+    "Milk Powder 400g": {
+        description: "Rich and creamy milk powder. Fortified with vitamins for a healthy start to your day.",
+        image: "assets/Milk Powder 400g.png",
+        rating: 5,
+        badge: null
+    },
+    "Tomatoes 1kg": {
+        description: "Fresh, juicy, and red-ripe tomatoes. Perfect for salads, sauces, and stews.",
+        image: "assets/cat_groceries.jpg",
+        rating: 4.5,
+        badge: { text: "FRESH", type: "yellow" }
+    }
+};
+
+let currentCategory = 'All Products';
+let currentSearch = '';
+let currentMaxPrice = 40000;
+
+async function fetchProducts() {
+    try {
+        const response = await fetch("../data/products.json");
+        if (!response.ok) {
+            throw new Error(`Failed to fetch data: ${response.status}`);
+        }
+        const jsonProducts = await response.json();
+        
+        products = jsonProducts.map((item) => {
+            const details = productDetailsMap[item.name] || {
+                description: "High quality product.",
+                image: "assets/cat_groceries.jpg",
+                rating: 0,
+                badge: null
+            };
+            return {
+                title: item.name,
+                category: item.category,
+                price: item.price,
+                description: details.description,
+                rating: details.rating,
+                badge: details.badge,
+                image: details.image
+            };
+        });
+        
+        filteredProducts = [...products];
+        renderCategories();
+        setupFilters();
+        renderCatalog();
+    } catch (error) {
+        console.error(error);
+        const gridContainer = document.getElementById('catalogGrid');
+        if (gridContainer) {
+            gridContainer.innerHTML = '<p>Failed to load products. Please try again later.</p>';
+        }
+    }
+}
+
+function renderCategories() {
+    const categoryList = document.querySelector('.category-list');
+    if (!categoryList) return;
+
+    // Get unique categories
+    const categories = ['All Products', ...new Set(products.map(p => p.category))];
+    
+    categoryList.innerHTML = '';
+    
+    categories.forEach(category => {
+        const li = document.createElement('li');
+        if (category === 'All Products') {
+            li.className = 'active';
+            li.innerHTML = `<a href="#" data-category="${category}">${category} <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg></a>`;
+        } else {
+            li.innerHTML = `<a href="#" data-category="${category}">${category}</a>`;
+        }
+        
+        li.addEventListener('click', (e) => {
+            e.preventDefault();
+            
+            // Update active state
+            document.querySelectorAll('.category-list li').forEach(el => el.classList.remove('active'));
+            li.classList.add('active');
+            
+            // Apply filter
+            currentCategory = category;
+            applyFilters();
+        });
+        
+        categoryList.appendChild(li);
+    });
+}
+
+function setupFilters() {
+    const searchInput = document.querySelector('.search-box input');
+    if (searchInput) {
+        searchInput.addEventListener('input', (e) => {
+            currentSearch = e.target.value.toLowerCase();
+            applyFilters();
+        });
+    }
+
+    const priceSlider = document.getElementById('priceSlider');
+    const priceLabel = document.getElementById('priceLabel');
+    
+    if (priceSlider && priceLabel && products.length > 0) {
+        // Find max price from products to set the slider range dynamically
+        const maxProductPrice = Math.ceil(Math.max(...products.map(p => p.price)));
+        priceSlider.max = maxProductPrice;
+        priceSlider.value = maxProductPrice;
+        currentMaxPrice = maxProductPrice;
+        priceLabel.textContent = `${maxProductPrice} FCFA`;
+        
+        priceSlider.addEventListener('input', (e) => {
+            currentMaxPrice = parseInt(e.target.value);
+            priceLabel.textContent = `${currentMaxPrice} FCFA`;
+            applyFilters();
+        });
+    }
+}
+
+function applyFilters() {
+    filteredProducts = products.filter(p => {
+        const matchesCategory = currentCategory === 'All Products' || p.category === currentCategory;
+        const matchesSearch = p.title.toLowerCase().includes(currentSearch);
+        const matchesPrice = p.price <= currentMaxPrice;
+        
+        return matchesCategory && matchesSearch && matchesPrice;
+    });
+    
+    currentPage = 1; // Reset to first page
+    renderCatalog();
+}
 
 function generateStarsHTML(rating) {
     if (rating === 0) return '';
@@ -204,7 +279,14 @@ function renderCatalog() {
     // Calculate pagination slice
     const startIndex = (currentPage - 1) * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;
-    const paginatedProducts = products.slice(startIndex, endIndex);
+    const paginatedProducts = filteredProducts.slice(startIndex, endIndex);
+
+    if (paginatedProducts.length === 0) {
+        gridContainer.innerHTML = '<p style="grid-column: 1/-1; text-align: center;">No products found matching your filters.</p>';
+        updateResultsText(0, 0);
+        renderPagination();
+        return;
+    }
 
     paginatedProducts.forEach(product => {
         const card = document.createElement('div');
@@ -213,11 +295,6 @@ function renderCatalog() {
         let badgeHTML = '';
         if (product.badge) {
             badgeHTML = `<div class="badge badge-${product.badge.type}">${product.badge.text}</div>`;
-        }
-
-        let oldPriceHTML = '';
-        if (product.oldPrice) {
-            oldPriceHTML = `<span class="old-price">$${product.oldPrice.toFixed(2)}</span>`;
         }
 
         const starsHTML = generateStarsHTML(product.rating);
@@ -233,8 +310,7 @@ function renderCatalog() {
                 <p class="product-description">${product.description}</p>
                 <div class="price-row">
                     <div class="price-col">
-                        <span class="price">$${product.price.toFixed(2)}</span>
-                        ${oldPriceHTML}
+                        <span class="price">${product.price.toLocaleString()} FCFA</span>
                     </div>
                     ${starsHTML}
                 </div>
@@ -252,7 +328,7 @@ function renderPagination() {
     const paginationContainer = document.querySelector('.pagination');
     if (!paginationContainer) return;
 
-    const totalPages = Math.ceil(products.length / itemsPerPage);
+    const totalPages = Math.ceil(filteredProducts.length / itemsPerPage);
     paginationContainer.innerHTML = ''; // Clear existing pagination
 
     if (totalPages <= 1) return; // No need for pagination if only 1 page
@@ -304,12 +380,12 @@ function renderPagination() {
 function updateResultsText(startIndex, endIndex) {
     const resultsTextElement = document.querySelector('.header-titles p');
     if (resultsTextElement) {
-        const actualEndIndex = Math.min(endIndex, products.length);
-        resultsTextElement.textContent = \`Showing \${startIndex + 1}-\${actualEndIndex} of \${products.length} results\`;
+        const actualEndIndex = Math.min(endIndex, filteredProducts.length);
+        resultsTextElement.textContent = `Showing ${filteredProducts.length > 0 ? startIndex + 1 : 0}-${actualEndIndex} of ${filteredProducts.length} results`;
     }
 }
 
 // Initialize on page load
 document.addEventListener('DOMContentLoaded', () => {
-    renderCatalog();
+    fetchProducts();
 });

@@ -65,27 +65,17 @@
                 </div>
 
                 <ul class="category-list">
-                    <li class="active">
-                        <a href="#">
-                            All Products
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
-                        </a>
-                    </li>
-                    <li><a href="#">Groceries</a></li>
-                    <li><a href="#">Household Items</a></li>
-                    <li><a href="#">Fresh Produce</a></li>
-                    <li><a href="#">Bakery</a></li>
-                    <li><a href="#">Dairy & Eggs</a></li>
+                    <!-- Categories will be injected here via JavaScript -->
                 </ul>
 
                 <div class="price-filter">
                     <h4 class="filter-title">FILTER BY PRICE</h4>
                     <div class="slider-container">
-                        <input type="range" min="0" max="1000" value="300" class="price-slider" aria-label="Price Filter">
+                        <input type="range" min="0" max="40000" value="40000" class="price-slider" id="priceSlider" aria-label="Price Filter">
                     </div>
                     <div class="price-labels">
-                        <span>$0</span>
-                        <span>$1000+</span>
+                        <span>0 FCFA</span>
+                        <span id="priceLabel">40000 FCFA</span>
                     </div>
                 </div>
             </aside>
