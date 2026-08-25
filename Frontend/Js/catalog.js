@@ -48,7 +48,7 @@ const productDetailsMap = {
     },
     "Tomato Paste (tin)": {
         description: "Rich and concentrated tomato paste for authentic taste and deep color in your meals.",
-        image: "assets/Tomato (Tin).png",
+        image: "assets/generated-image_2026-08-25_11-03-45-858.png",
         rating: 4,
         badge: null
     },
@@ -120,7 +120,7 @@ const productDetailsMap = {
     },
     "Tomatoes 1kg": {
         description: "Fresh, juicy, and red-ripe tomatoes. Perfect for salads, sauces, and stews.",
-        image: "assets/cat_groceries.jpg",
+        image: "assets/Tomato (Tin).png",
         rating: 4.5,
         badge: { text: "FRESH", type: "yellow" }
     }
