@@ -553,6 +553,500 @@ img {
 }
 
 /* ==========================================================================
+   Instagram Showcase & Featured Spotlight (Section 3)
+   ========================================================================== */
+.instagram-showcase-section {
+    background: linear-gradient(180deg, #FBF9F5 0%, #F5F0E6 50%, #FAF7F2 100%);
+    padding: 5rem 0 6rem 0;
+    position: relative;
+    border-top: 1px solid #ECE6DA;
+    border-bottom: 1px solid #ECE6DA;
+}
+
+.instagram-showcase-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+}
+
+/* --- Part 1: Instagram Gallery --- */
+.insta-gallery-block {
+    display: flex;
+    flex-direction: column;
+    gap: 1.75rem;
+}
+
+.insta-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.insta-title {
+    font-family: var(--font-heading);
+    font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+    font-weight: 700;
+    color: #1A1613;
+    letter-spacing: -0.5px;
+    line-height: 1.15;
+    text-transform: uppercase;
+}
+
+.insta-brand-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    color: #2D2723;
+    font-size: 0.95rem;
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px solid #E5DEC9;
+    border-radius: 50px;
+    backdrop-filter: blur(8px);
+    transition: all var(--transition-speed) ease;
+}
+
+.insta-brand-link:hover {
+    color: #FDB022;
+    background: #FFFFFF;
+    border-color: #FDB022;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(253, 176, 34, 0.18);
+}
+
+.insta-icon {
+    transition: transform var(--transition-speed);
+}
+
+.insta-brand-link:hover .insta-icon {
+    transform: scale(1.1);
+}
+
+.insta-gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+}
+
+.insta-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+}
+
+.insta-img-box {
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    aspect-ratio: 1 / 1;
+    background: #EFECE6;
+    box-shadow: 0 4px 16px rgba(26, 22, 19, 0.06);
+    border: 1px solid rgba(230, 222, 210, 0.8);
+}
+
+.insta-img-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s ease;
+}
+
+.insta-overlay-icon {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(11, 20, 35, 0.4) 0%, rgba(234, 88, 12, 0.4) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FFFFFF;
+    opacity: 0;
+    transition: opacity var(--transition-speed) ease;
+}
+
+.insta-overlay-icon svg {
+    transform: scale(0.8);
+    transition: transform var(--transition-speed) ease;
+}
+
+.insta-item:hover .insta-img-box img {
+    transform: scale(1.06);
+}
+
+.insta-item:hover .insta-overlay-icon {
+    opacity: 1;
+}
+
+.insta-item:hover .insta-overlay-icon svg {
+    transform: scale(1.15);
+}
+
+.insta-handle-meta {
+    font-size: 0.88rem;
+    font-weight: 500;
+    color: #2D2723;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.2rem;
+    transition: color var(--transition-speed);
+}
+
+.insta-handle-meta .insta-at {
+    font-weight: 400;
+    opacity: 0.65;
+}
+
+.insta-item:hover .insta-handle-meta {
+    color: #FDB022;
+}
+
+/* --- Part 2: Split Spotlight & Trust Section --- */
+.spotlight-split-block {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.75rem;
+    align-items: stretch;
+}
+
+/* Left Stacked Column */
+.spotlight-left-col {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+/* Mini Product Card */
+.spotlight-mini-card {
+    background: #FFFFFF;
+    border: 1px solid #EAE3D5;
+    border-radius: 12px;
+    padding: 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    box-shadow: 0 4px 18px rgba(26, 22, 19, 0.04);
+    transition: transform var(--transition-speed), box-shadow var(--transition-speed), border-color var(--transition-speed);
+}
+
+.spotlight-mini-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(26, 22, 19, 0.08);
+    border-color: #E0D3BE;
+}
+
+.mini-prod-img-box {
+    width: 90px;
+    height: 90px;
+    flex-shrink: 0;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #E8DEC8;
+}
+
+.mini-prod-img-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.spotlight-mini-card:hover .mini-prod-img-box img {
+    transform: scale(1.08);
+}
+
+.mini-prod-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.mini-prod-name {
+    font-family: var(--font-body);
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #1A1613;
+    line-height: 1.25;
+}
+
+.mini-prod-tagline {
+    font-size: 0.8rem;
+    color: #726A62;
+    line-height: 1.35;
+}
+
+.mini-prod-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 0.4rem;
+}
+
+.mini-prod-price {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #1A1613;
+}
+
+.mini-prod-add-btn {
+    width: 28px;
+    height: 28px;
+    border-radius: 4px;
+    background-color: #1A1613;
+    color: #FFFFFF;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color var(--transition-speed), transform var(--transition-speed);
+}
+
+.mini-prod-add-btn:hover {
+    background-color: #FDB022;
+    transform: scale(1.1);
+}
+
+.mini-prod-add-btn:active {
+    transform: scale(0.95);
+}
+
+/* Trust Card */
+.spotlight-trust-card {
+    background: #FFFFFF;
+    border: 1px solid #EAE3D5;
+    border-radius: 12px;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 140px;
+    gap: 1.25rem;
+    box-shadow: 0 4px 18px rgba(26, 22, 19, 0.04);
+    transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+}
+
+.spotlight-trust-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(26, 22, 19, 0.08);
+}
+
+.trust-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.trust-card-heading {
+    font-family: var(--font-body);
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #1A1613;
+    line-height: 1.25;
+    max-width: 200px;
+}
+
+.trust-arrow-btn {
+    color: #1A1613;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.25rem;
+    transition: transform var(--transition-speed), color var(--transition-speed);
+}
+
+.spotlight-trust-card:hover .trust-arrow-btn {
+    transform: translate(3px, -3px);
+    color: #FDB022;
+}
+
+.trust-card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.trustpilot-rating-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-weight: 700;
+    font-size: 0.92rem;
+    color: #1A1613;
+}
+
+.trust-score-wrapper {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.2rem;
+}
+
+.trust-score-num {
+    font-size: 2.2rem;
+    font-weight: 700;
+    line-height: 1;
+    color: #1A1613;
+    letter-spacing: -1px;
+}
+
+.trust-star-gold {
+    color: #FDB022;
+    font-size: 1.25rem;
+}
+
+/* Right Hero Spotlight Card */
+.spotlight-hero-card {
+    background: #FFFFFF;
+    border: 1px solid #EAE3D5;
+    border-radius: 14px;
+    padding: 2.25rem;
+    box-shadow: 0 6px 24px rgba(26, 22, 19, 0.05);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 2rem;
+    position: relative;
+    overflow: hidden;
+    transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+}
+
+.spotlight-hero-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 32px rgba(26, 22, 19, 0.09);
+}
+
+.spotlight-hero-body {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    z-index: 2;
+    max-width: 380px;
+}
+
+.spotlight-badge-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.4rem 0.85rem;
+    background: #FAF7F2;
+    border: 1px solid #E8DEC8;
+    border-radius: 30px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: #2D2723;
+    width: fit-content;
+}
+
+.spotlight-hero-headline {
+    font-family: var(--font-heading);
+    font-size: clamp(1.75rem, 3.2vw, 2.5rem);
+    font-weight: 700;
+    color: #1A1613;
+    line-height: 1.12;
+    letter-spacing: -0.5px;
+    text-transform: uppercase;
+}
+
+.spotlight-hero-action-row {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    margin-top: 0.5rem;
+}
+
+.btn-spotlight-cart {
+    background: linear-gradient(135deg, #F97316 0%, #FDB022 50%, #C2410C 100%);
+    color: #FFFFFF;
+    border: none;
+    padding: 0.9rem 1.6rem;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    cursor: pointer;
+    box-shadow: 0 6px 18px rgba(234, 88, 12, 0.35);
+    transition: transform var(--transition-speed), box-shadow var(--transition-speed), filter var(--transition-speed);
+}
+
+.btn-spotlight-cart:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(234, 88, 12, 0.45);
+    filter: brightness(1.05);
+}
+
+.btn-spotlight-cart:active {
+    transform: scale(0.98);
+}
+
+.spotlight-hero-price {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #1A1613;
+    letter-spacing: -0.5px;
+}
+
+.spotlight-hero-visual {
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    background: linear-gradient(135deg, #FBF3E8 0%, #F5E5D3 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 240px;
+    border: 1px solid #ECE0D0;
+}
+
+.spotlight-hero-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.spotlight-hero-card:hover .spotlight-hero-img {
+    transform: scale(1.05);
+}
+
+/* --- Added Cart Toast Notification --- */
+.cart-toast {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background: #0B1423;
+    color: #FFFFFF;
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    border-left: 4px solid var(--clr-accent);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+    font-size: 0.9rem;
+    font-weight: 500;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    transform: translateY(100px);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cart-toast.show {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+}
+
+/* ==========================================================================
    Responsive Design
    ========================================================================== */
 @media (min-width: 768px) {
@@ -561,8 +1055,25 @@ img {
     }
     
     .card-large {
-        aspect-ratio: 16/10; /* Make the middle one wider/taller relatively */
+        aspect-ratio: 16/10;
         transform: translateY(-20px);
+    }
+
+    .insta-gallery-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1.5rem;
+    }
+
+    .spotlight-hero-card {
+        flex-direction: row;
+        align-items: center;
+        gap: 2.5rem;
+    }
+
+    .spotlight-hero-visual {
+        width: 48%;
+        min-height: 280px;
+        align-self: stretch;
     }
 
     .products-grid {
@@ -589,6 +1100,15 @@ img {
         display: none;
     }
 
+    .spotlight-split-block {
+        grid-template-columns: 340px 1fr;
+        gap: 2rem;
+    }
+
+    .spotlight-hero-card {
+        padding: 2.5rem 3rem;
+    }
+
     .trending-layout {
         grid-template-columns: 300px 1fr;
     }
@@ -597,3 +1117,11 @@ img {
         grid-template-columns: repeat(3, 1fr);
     }
 }
+
+@media (min-width: 1200px) {
+    .spotlight-split-block {
+        grid-template-columns: 360px 1fr;
+        gap: 2.5rem;
+    }
+}
+
