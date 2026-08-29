@@ -68,6 +68,6 @@ Additional Resources
 -Fonts were imported from Font Awesome for icons and visual elements. 
 
 -Some project images were generated using ChatGPT models. 
-
+-Live view URL:https://d3ohwdhyzctk8j.cloudfront.net
 ## Conclusion
 Nkwen Traders demonstrates how web technologies and Git/GitHub can be used collaboratively to develop a convenient e-commerce platform.
